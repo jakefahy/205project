@@ -1,5 +1,6 @@
 # CST-205 Multimedia Design & Programming
-#
+# Authors: Blayne Suttinwills, Jacob Fahy, Andrea Amezcua Moreno
+# May 14, 2018
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit
 from PyQt5.QtCore import pyqtSlot
