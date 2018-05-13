@@ -72,18 +72,18 @@ class DecodeWindow(QWidget):
         self.setLayout(vbox)
 
         self.btn0.clicked.connect(self.getImage)
-        #self.boton.clicked.connect(self.getMessage)
+        #self.button.clicked.connect(self.)
 
     @pyqtSlot()
     def getImage(self):
-        fname, filter = QFileDialog.getOpenFileName(self, 'Open File', 'c:\\', "Image File (*.jpg)")
-        self.loadImage(fname)
+        fname, filter = QFileDialog.getOpenFileName(self, 'Open File', 'c:\\', "Image File (*.jpeg)")
+        if fname:
+            self.loadImage(fname)
+        else:
+            print('Invalid Image')
 
     def loadImage(self, fname):
-        img = self.image = cv2.imread(fname)
-
-    #def getMessage(self):
-    #    decoding()
+        self.image = cv2.imread(fname)
 
 app = QApplication(sys.argv)
 main_win = gui()
