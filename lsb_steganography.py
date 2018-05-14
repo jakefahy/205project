@@ -1,6 +1,6 @@
 from stegano import lsb
 from PIL import Image
-#Blay Suttonwills worked on this file
+#Blayne Suttonwills worked on this file
 
 #Encoding the message into the image
 def encoding(fname, string):
