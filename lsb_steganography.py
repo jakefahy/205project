@@ -1,17 +1,16 @@
-import lsb_math
-from PIL import Image
 from stegano import lsb
-from stegano import exifHeader
+from PIL import Image
+#Blayne Suttonwills worked on this file
 
-# im = Image.open('Pres_Obama.jpg')
+#Encoding the message into the image
+def encoding(fname, string):
+    img = fname
+    secret = lsb.hide(img, string)
+    img = Image.open(img)
+    img.show()
+    secret.save("hidden.png")
 
-# secret = exifHeader.hide("./tests/sample-files/Pres_Obama.jpg",
-#                         "./Pres_Obama.jpg", secret_message="Hello world!")
-# print(exifHeader.reveal("./Pres_Obama.jpg"))
-
-
-
-secret = lsb.hide("./Pres_Obama.jpg", "Hello World")
-secret.save("./Pres_Obama-secret.jpg")
-
-# clear_message = lsb.reveal("./Pres_Obama-secret.jpg")
+#Decoding the image and getting the message back
+def decoding():
+    clear_message = lsb.reveal("./hidden.png")
+    print(clear_message)
