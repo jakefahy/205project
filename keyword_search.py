@@ -33,8 +33,5 @@ def keyword(string):
                 image_file = glob.glob('./downloads/'+ word +'/*.png')
                 print(image_file)
                 for i in range(len(image_file)):
-                    #image_file[i] = Image.open(image_file[i])
-                    #image_file[i].show()
-                    #return image_file[i]
                     encoding(image_file[i], new_string)
             #sends the image and the messasge into the encoding function

@@ -11,6 +11,6 @@ def encoding(fname, string):
     secret.save("hidden.png")
 
 #Decoding the image and getting the message back
-def decoding():
-    clear_message = lsb.reveal("./hidden.png")
+def decoding(fname):
+    clear_message = lsb.reveal(fname)
     print(clear_message)

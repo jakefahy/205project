@@ -22,11 +22,13 @@ from lsb_steganography import decoding
 class gui(QWidget):
     def __init__(self):
         super().__init__()
-        #make buttons
+
+#make buttons
         self.setWindowTitle('205 Project')
         self.btn1 = QPushButton('Decode')
         self.btn2 = QPushButton('Encode')
-        #layout the buttons
+
+#layout the buttons
         hbox = QHBoxLayout()
         hbox.addWidget(self.btn2)
         hbox.addWidget(self.btn1)
@@ -40,7 +42,8 @@ class gui(QWidget):
         self.new_win.show()
 
     def decode(self):
-        decoding()
+        self.new_win = DecodeWindow()
+        self.new_win.show()
 #Encoding the message into the image
 class EncodeWindow(QWidget):
     def __init__(self):
@@ -56,13 +59,35 @@ class EncodeWindow(QWidget):
         self.setLayout(vbox)
 
         self.btn.clicked.connect(self.getText)
-#Decoding the image and getting the message back
+
     @pyqtSlot()
     def getText(self):
         text = self.line_edit.text()
         #print(text)
         keyword(text)
+        
+#Decoding the image and getting the message back
+class DecodeWindow(QWidget):
+    def __init__(self):
+        super().__init__()
 
+        self.image=None
+        self.btn0 = QPushButton('Get Image')
+        self.boton = QPushButton('Get Message')
+
+        vbox = QVBoxLayout()
+        vbox.addWidget(self.btn0)
+        vbox.addWidget(self.boton)
+        self.setLayout(vbox)
+
+        self.btn0.clicked.connect(self.getImage)
+        #self.boton.clicked.connect(self.getMessage)
+
+    @pyqtSlot()
+    def getImage(self):
+        fname, filter = QFileDialog.getOpenFileName(self, 'Open File', 'c:\\', "Image File (*.png)")
+        foto = self.image = cv2.imread(fname)
+        decoding(foto)
 
 app = QApplication(sys.argv)
 main_win = gui()
